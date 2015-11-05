@@ -1,0 +1,13 @@
+line {
+  stroke: white;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+body {
+	background-color: black;
+}
+
+.white {
+    fill: rgb(255,255,0);
+ }

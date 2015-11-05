@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<head>
+	<meta charset="utf-8">
+	<title>FED2 - SVG Animation</title>
+
+	<style type="text/css">
+	#Layer_1 polygon {
+		  /*visibility: hidden;*/
+		}
+	</style>
+</head>
+
+<body>
+	<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 190 155" enable-background="new 0 0 190 155" xml:space="preserve">
+		<g>
+			<polygon fill="none" stroke="#6D6E71" stroke-width="2" points="45,58.5 57.6,51.3 70.2,58.5 70.2,73.1 57.6,80.3 45,73.1 	"/>
+			<polygon fill="none" stroke="#6D6E71" stroke-width="2" points="107.6,80.3 120.2,73.1 132.8,80.3 132.8,94.9 120.2,102.1 
+				107.6,94.9 	"/>
+			<polygon fill="none" stroke="#6D6E71" stroke-width="2" points="95.1,58.5 107.7,51.3 120.2,58.5 120.2,73.1 107.7,80.3 95.1,73.1 
+					"/>
+			<polygon fill="none" stroke="#6D6E71" stroke-width="2" points="82.5,80.3 95.1,73.1 107.7,80.3 107.7,94.9 95.1,102.1 82.5,94.9 	
+				"/>
+			<polygon fill="none" stroke="#6D6E71" stroke-width="2" points="82.5,36.7 95.1,29.5 107.7,36.7 107.7,51.3 95.1,58.6 82.5,51.3 	
+				"/>
+			<polygon fill="none" stroke="#6D6E71" stroke-width="2" points="95,102.1 107.6,94.8 120.2,102.1 120.2,116.6 107.6,123.9 
+				95,116.6 	"/>
+			<polygon fill="none" stroke="#6D6E71" stroke-width="2" points="107.6,123.9 120.1,116.6 132.7,123.9 132.7,138.5 120.1,145.7 
+				107.6,138.5 	"/>
+			<polygon fill="none" stroke="#6D6E71" stroke-width="2" points="57.4,36.7 70,29.5 82.6,36.7 82.6,51.3 70,58.5 57.4,51.3 	"/>
+			<polygon fill="none" stroke="#6D6E71" stroke-width="2" points="95,15 107.6,7.7 120.2,15 120.2,29.6 107.6,36.8 95,29.6 	"/>
+		</g>
+	</svg>
+	
+	<script src="/FED2/js/TweenMax.min.js"></script>
+	<script src="/FED2/js/Draggable.js"></script>
+	<!--<script src="/FED2/js/TweenLite.min.js"></script>
+	<script src="/FED2/js/DrawSVGPlugin.js"></script> only for paying members :-(
+	<script src="/FED2/js/routie.js"></script>
+	<script src="/FED2/js/AttrPlugin.min.js"></script>-->
+
+	<script type="text/javascript">
+		(function () {
+			TweenMax.set("#Layer_1", {visibility:"none"});
+
+			//TweenMax.set("svg>polyline", {visibility:"visible"});
+			TweenMax.to("#Layer_1", 0, {attr:{x:100, y:50, width:300, height:300}, ease:Linear.easeNone});
+    		//TweenMax.to("#Layer_1", 2, {attr:{x:"0%", y:"0%"}, x:"40%", y:"0%", onComplete: nextLeaf});
+
+
+    		
+    		// rotate around origin
+    		TweenLite.to("#Layer_1", .75, {rotation:10, transformOrigin:"bottom right"});
+
+    		TweenLite.set("#Layer_1", {transformOrigin:"50% 50%"});
+			// Draggable.create("#Layer_1", {
+			//   type:"rotation",
+			//   throwProps:true  
+			// })
+			function nextLeaf(){
+				console.log('another one');
+				TweenMax.to("#Layer_1", 2, {attr:{x:"0%", y:"0%"}, x:"70%", y:"0%", onComplete: nextLeaf2});
+				TweenMax.from("#Layer_1", 2, {opacity:0});
+			}
+
+			function nextLeaf2(){
+				console.log('last one');
+				TweenMax.to("#Layer_1", 2, {attr:{x:"0%", y:"0%"}, x:"90%", y:"0%"});
+			}
+
+			TweenLite.to(".box", 1, {rotation:360, transformOrigin:"50% 50%"});
+
+			//TweenMax.to("#Layer_1", 1, {attr:{x:100, y:50, width:300, height:300}, ease:Linear.easeNone});
+			TweenLite.to("Layer_1", 1, {rotation:360, transformOrigin:"50% 50%"}); 
+		})(); 
+
+	</script>
+</body>
+</HTML>
